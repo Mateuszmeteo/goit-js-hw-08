@@ -1,29 +1,37 @@
 // import player from '@vimeo/player';
 import throttle from 'lodash.throttle';
 
-const iframe = document.querySelector('iframe');
-    
+const iframe = document.querySelector('iframe');   
 const player = new Vimeo.Player(iframe);
+const timeKey = "videoplayer-current-time";
 
 
-// player.on('timeupdate', throttle(onPlay, 1000));
 
-// function onPlay({ seconds }) {
-//   localStorage.setItem('videoplayer-current-time', seconds);
-// }
 
-// player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // // // ............................................ //
 
 
 
-// // const onPlay = function(data) {
-// //     // data is an object containing properties specific to that event
-// // };
+const onPlay = function(data) {
+    const stringData = JSON.stringify(data)
+    localStorage.setItem(timeKey, stringData)
+};
 
-// // player.on('play', onPlay);
+player.on('timeupdate', throttle(onPlay, 1000));
 
 // // // .......................................................... //
 
@@ -48,19 +56,19 @@ const player = new Vimeo.Player(iframe);
 
 
 
-// // player.setCurrentTime(30.456).then(function(seconds) {
-// //     // seconds = the actual time that the player seeked to
-// // }).catch(function(error) {
-// //     switch (error.name) {
-// //         case 'RangeError':
-// //             // the time was less than 0 or greater than the video’s duration
-// //             break;
+player.setCurrentTime(localStorage.getItem(timeKey)).then(function(seconds) {
+    // seconds = the actual time that the player seeked to
+}).catch(function(error) {
+    switch (error.name) {
+        case 'RangeError':
+            // the time was less than 0 or greater than the video’s duration
+            break;
 
-// //         default:
-// //             // some other error occurred
-// //             break;
-// //     }
-// // });
+        default:
+            // some other error occurred
+            break;
+    }
+});
 
 
 // // // ........................................ //
