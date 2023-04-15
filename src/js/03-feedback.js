@@ -7,6 +7,7 @@ const formEl = document.querySelector('.feedback-form');
 const emailEl = document.querySelector('input[name = "email"]');
 const messageEl = document.querySelector('textarea[name = "message"]');
 
+// const submitEl = document.querySelector('button[type = "submit"]')
 
 
 const feedback = {
@@ -14,17 +15,17 @@ const feedback = {
   message: messageEl.value
 }
 
-function addLocalStorage () {
-    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(feedback))
+// function addLocalStorage () {
+//     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(feedback))
+//     console.log(addLocalStorage)
+// }
 
-}
+// const throttledAddToLocalStorage = throttle(addToLocalStorage, 500)
 
-const throttledAddToLocalStorage = throttle(addToLocalStorage, 500)
-
-window.addEventListener('submit', (e)) = {
+// window.addEventListener('submit', (e)) = {
     
 
-}
+// }
 
 
 // updateOutput();
