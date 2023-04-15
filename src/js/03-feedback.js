@@ -15,17 +15,19 @@ const feedback = {
   message: messageEl.value
 }
 
-// function addLocalStorage () {
-//     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(feedback))
-//     console.log(addLocalStorage)
-// }
+function addLocalStorage () {
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(feedback))
+    // console.log(feedback)
+}
 
 // const throttledAddToLocalStorage = throttle(addToLocalStorage, 500)
 
-// window.addEventListener('submit', (e)) = {
-    
+window.addEventListener('submit', (e) => {
+  e.preventDefault()
+  localStorage.getItem(LOCALSTORAGE_KEY, JSON.stringify(feedback))
+  console.log(addLocalStorage())
 
-// }
+}) 
 
 
 // updateOutput();
