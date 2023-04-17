@@ -10,24 +10,58 @@ const messageEl = document.querySelector('textarea[name = "message"]');
 // const submitEl = document.querySelector('button[type = "submit"]')
 
 
-const feedback = {
+
+
+const addLocalStorage = () => {
+  const feedback = {
   email: emailEl.value,
   message: messageEl.value
 }
-
-function addLocalStorage () {
-    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(feedback))
-    // console.log(feedback)
+  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(feedback))
+  // console.log(feedback)
 }
 
-// const throttledAddToLocalStorage = throttle(addToLocalStorage, 500)
+// function loadLocalStorage () {
+//   feedback = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || {};
+// }
 
-window.addEventListener('submit', (e) => {
+// emailEl.addEventListener('input',throttle(addToLocalStorage, 500))
+// messageEl.addEventListener('input',throttle(addToLocalStorage, 500))
+
+
+
+  const throttledAddLocalStorage = throttle(addLocalStorage, 500);
+
+
+window.addEventListener('load', (e) => {
   e.preventDefault()
-  localStorage.getItem(LOCALSTORAGE_KEY, JSON.stringify(feedback))
-  console.log(addLocalStorage())
+  const storageParse = localStorage.getItem(LOCALSTORAGE_KEY);
+  JSON.parse(storageParse);
+  emailEl.value = storageParse.email || '';
+  messageEl.value = storageParse.message || '';
+  console.log(localStorage)
 
 }) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // updateOutput();
@@ -42,3 +76,21 @@ window.addEventListener('submit', (e) => {
 // function updateOutput() {
 //     output.textContent = localStorage.getItem(LOCALSTORAGE_KEY) || "";
 //   }
+
+
+
+
+
+
+
+// function addLocalStorage () {
+//   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(feedback))
+//   // console.log(feedback)
+// }
+
+// window.addEventListener('submit', (e) => {
+//   e.preventDefault()
+//   localStorage.getItem(LOCALSTORAGE_KEY, JSON.stringify(feedback))
+//   console.log(addLocalStorage())
+
+// }) 
