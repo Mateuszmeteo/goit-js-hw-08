@@ -21,15 +21,6 @@ const addLocalStorage = () => {
   // console.log(feedback)
 }
 
-// function loadLocalStorage () {
-//   feedback = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || {};
-// }
-
-// emailEl.addEventListener('input',throttle(addToLocalStorage, 500))
-// messageEl.addEventListener('input',throttle(addToLocalStorage, 500))
-
-
-
   const throttledAddLocalStorage = throttle(addLocalStorage, 500);
 
 
@@ -45,8 +36,20 @@ window.addEventListener('load', (e) => {
 
 
 
+/// funkcja czyszcząca....///
 
 
+
+
+
+
+
+// function loadLocalStorage () {
+//   feedback = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || {};
+// }
+
+// emailEl.addEventListener('input',throttle(addToLocalStorage, 500))
+// messageEl.addEventListener('input',throttle(addToLocalStorage, 500))
 
 
 
