@@ -11,28 +11,38 @@ const messageEl = document.querySelector('textarea[name = "message"]');
 
 
 
-
 const addLocalStorage = () => {
   const feedback = {
   email: emailEl.value,
   message: messageEl.value
 }
+}
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(feedback))
   // console.log(feedback)
-}
-
-  const throttledAddLocalStorage = throttle(addLocalStorage, 500);
 
 
-window.addEventListener('load', (e) => {
-  e.preventDefault()
-  const storageParse = localStorage.getItem(LOCALSTORAGE_KEY);
-  JSON.parse(storageParse);
-  emailEl.value = storageParse.email || '';
-  messageEl.value = storageParse.message || '';
-  console.log(localStorage)
+  const throttledAddLocalStorage = throttle (e => {
+    emailEl = input.value;
+    messageEl = input.value;
+    localStorage.setItem(JSON.stringify({emailEl, messageEl}))
+  },500)
+  
+  form.addEventListener('input', throttledAddLocalStorage)
+  
+  
+  
+  // (addLocalStorage, 500);
 
-}) 
+
+// window.addEventListener('load', (e) => {
+//   e.preventDefault()
+//   const storageParse = localStorage.getItem(LOCALSTORAGE_KEY);
+//   JSON.parse(storageParse);
+//   emailEl.value = storageParse.email || '';
+//   messageEl.value = storageParse.message || '';
+//   console.log(localStorage)
+
+// }) 
 
 
 
